@@ -1,0 +1,180 @@
+#################################################################
+##  Switches
+#################################################################
+
+#################################################################
+##  Template Switches
+#################################################################
+
+        ##########################################################
+        ## Living Room Random Light Color
+        ##########################################################
+
+  - platform: template
+    switches:
+      livingroom_rainbow:
+        value_template: "{{ is_state('input_boolean.livingroom_rainbow', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: input_boolean.livingroom_rainbow
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: input_boolean.livingroom_rainbow
+
+        ##########################################################
+        ## Bedroom Random Light Color
+        ##########################################################
+
+  - platform: template
+    switches:
+      bedroom_rainbow:
+        value_template: "{{ is_state('input_boolean.bedroom_rainbow', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: input_boolean.bedroom_rainbow
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: input_boolean.bedroom_rainbow
+
+        ##########################################################
+        ## Office Random Light Color
+        ##########################################################
+
+  - platform: template
+    switches:
+      office_rainbow:
+        value_template: "{{ is_state('input_boolean.office_rainbow', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: input_boolean.office_rainbow
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: input_boolean.office_rainbow
+
+        ##########################################################
+        ## Front Porch Random Light Color
+        ##########################################################
+
+  - platform: template
+    switches:
+      front_porch_rainbow:
+        value_template: "{{ is_state('input_boolean.front_porch_rainbow', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: input_boolean.front_porch_rainbow
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: input_boolean.front_porch_rainbow
+
+        ##########################################################
+        ## Bedtime Switch
+        ##########################################################
+
+  - platform: template
+    switches:
+      bedtime:
+        value_template: "{{ is_state('input_boolean.bedtime', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: input_boolean.bedtime
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: input_boolean.bedtime
+
+        ##########################################################
+        ## Backyard Lighting
+        ##########################################################
+
+  - platform: template
+    switches:
+      backyard_lighting:
+        value_template: "{{ is_state('group.backyard_lighting', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.backyard_lighting
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.backyard_lighting
+
+        ##########################################################
+        ## Panic Mode
+        ##########################################################
+
+  - platform: template
+    switches:
+      panic_mode:
+        value_template: "{{ is_state('input_boolean.panic_mode', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: input_boolean.panic_mode
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: input_boolean.panic_mode
+
+        ##########################################################
+        ## Disable Smoke Alarm
+        ##########################################################
+
+  - platform: template
+    switches:
+      disable_smoke_alarm:
+        value_template: "{{ is_state('input_boolean.disable_smoke_alarm', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: input_boolean.disable_smoke_alarm
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: input_boolean.disable_smoke_alarm
+
+        ##########################################################
+        ## Living Room Fans
+        ##########################################################
+
+  - platform: template
+    switches:
+      living_room_fans:
+        value_template: "{{ is_state('group.living_room_fans', 'on') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          data:
+            entity_id: group.living_room_fans
+        turn_off:
+          service: homeassistant.turn_off
+          data:
+            entity_id: group.living_room_fans
+
+        ##########################################################
+        ## Living Room East Fan Dimmer
+        ##########################################################
+
+  - platform: command_line
+    switches:
+      living_room_east_fan_dimmer:
+        command_on: 'curl -H "BOND-Token: REDACTED" -i http://bond.network.REDACTED/v2/devices/REDACTED/actions/StartDimmer -X PUT -d "{}"'
+        command_off: 'curl -H "BOND-Token: REDACTED" -i http://bond.network.REDACTED/v2/devices/REDACTED/actions/Stop -X PUT -d "{}"'
+
+        ##########################################################
+        ## Living Room West Fan Dimmer
+        ##########################################################
+
+  - platform: command_line
+    switches:
+      living_room_west_fan_dimmer:
+        command_on: 'curl -H "BOND-Token: REDACTED" -i http://bond.network.REDACTED/v2/devices/REDACTED/actions/StartDimmer -X PUT -d "{}"'
+        command_off: 'curl -H "BOND-Token: REDACTED" -i http://bond.network.REDACTED/v2/devices/REDACTED/actions/Stop -X PUT -d "{}"'

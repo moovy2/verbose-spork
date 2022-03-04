@@ -1,0 +1,23 @@
+#################################################################
+## Emulated Hue
+#################################################################
+
+  host_ip: REDACTED.240
+  listen_port: 80
+  off_maps_to_on_domains:
+    - script
+    - scene
+  expose_by_default: false
+  entities:
+    switch.fireplace:
+      hidden: false
+      name: "Remote FRPLC"
+    light.living_room_accent_lights:
+      hidden: false
+      name: "Remote LVNGRM"
+    switch.living_room_fans:
+      hidden: false
+      name: "Remote LVNGRM Fans"
+    light.living_room_fan_lights:
+      hidden: false
+      name: "Remote LVNGRM Fan Lights"

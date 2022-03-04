@@ -1,0 +1,2164 @@
+resources:
+  - type: module
+    url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+title: Home
+views:
+  - badges: []
+    cards:
+      - cards:
+          - card:
+              cards:
+                - entity: alarm_control_panel.alarm
+                  states:
+                    - arm_home
+                    - arm_away
+                  type: alarm-panel
+              type: vertical-stack
+            conditions:
+              - entity: alarm_control_panel.alarm
+                state_not: disarmed
+            type: conditional
+          - entities:
+              - entity: person.USER1
+              - entity: person.USER2
+            title: Household
+            type: glance
+            show_name: false
+          - card:
+              show_state: false
+              title: Friends and Family
+              type: glance
+            entities:
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+              - person.REDACTED
+            show_empty: false
+            state_filter:
+              - home
+            type: entity-filter
+          - entities:
+              - entity: light.living_room_lights
+              - entity: light.dining_room_lights
+              - entity: light.bedroom_lights
+              - entity: light.kitchen_lights
+              - entity: light.hallway_light
+              - entity: light.bathroom_lights
+              - entity: light.stairs_light
+              - entity: light.basement_lighting
+              - entity: light.USER1_office_lights
+                name: USER1's Office
+              - entity: light.USER2_office_lights
+                name: USER2's Office
+              - entity: light.guest_bedroom_lights
+              - entity: light.upstairs_bathroom_lights
+            title: Interior Lights
+            type: entities
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: light.front_porch
+              - entity: light.back_door
+              - entity: light.backyard_deck
+              - entity: light.backyard_patio
+              - entity: light.garage_light
+              - entity: light.garage_interior
+              - entity: switch.front_yard_lighting
+                state_color: true
+              - entity: switch.backyard_lighting
+                state_color: true
+            title: Exterior Lights
+            type: entities
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: vacuum.main_floor_roomba
+              - entity: vacuum.upstairs_roomba
+              - entity: vacuum.basement_roomba
+            title: Vacuums
+            type: glance
+            state_color: true
+          - card:
+              entity: binary_sensor.upstairs_roomba_bin_full
+              hold_action:
+                action: none
+              icon_height: 50px
+              show_icon: true
+              show_name: true
+              tap_action:
+                action: none
+              type: button
+            conditions:
+              - entity: binary_sensor.upstairs_roomba_bin_full
+                state: 'on'
+            type: conditional
+          - card:
+              entity: binary_sensor.basement_roomba_bin_full
+              hold_action:
+                action: none
+              icon_height: 50px
+              show_icon: true
+              show_name: true
+              tap_action:
+                action: none
+              type: button
+            conditions:
+              - entity: binary_sensor.basement_roomba_bin_full
+                state: 'on'
+            type: conditional
+          - entities:
+              - entity: input_select.living_room_tv_remote
+                name: Living Room
+              - entity: input_select.bedroom_tv_remote
+                name: Bedroom
+              - entity: input_select.USER1_s_office_tv_remote
+                name: USER1's Office
+            show_icon: true
+            show_state: true
+            title: TV Remote
+            type: glance
+            state_color: false
+          - entities:
+              - entity: climate.main_floor
+              - entity: switch.fireplace
+                hold_action:
+                  action: more-info
+                tap_action:
+                  action: toggle
+              - entity: climate.USER1s_office_fan
+                name: Office
+              - entity: switch.basement_heater
+                hold_action:
+                  action: more-info
+                name: Basement
+                tap_action:
+                  action: toggle
+              - entity: sensor.REDACTED_temperature
+                name: Outdoor
+            title: Climate Control
+            type: glance
+            state_color: true
+          - entities:
+              - entity: lock.front_door
+                name: Front Door
+              - entity: lock.back_door
+                name: Back Door
+              - entity: lock.basement_door
+                name: Basement Door
+            title: Locks
+            type: glance
+            state_color: true
+          - entity: cover.garage_door
+            hold_action:
+              action: more-info
+            show_icon: true
+            show_name: true
+            tap_action:
+              action: toggle
+            type: button
+        type: vertical-stack
+      - cards:
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.front_porch
+            show_name: true
+            show_state: false
+            type: picture-entity
+          - cards:
+              - aspect_ratio: 56%
+                camera_view: live
+                entity: camera.driveway
+                show_name: true
+                show_state: false
+                type: picture-entity
+            type: vertical-stack
+        type: vertical-stack
+      - cards:
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.garage
+            show_state: false
+            type: picture-entity
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.backyard_gate
+            show_state: false
+            type: picture-entity
+        type: vertical-stack
+      - cards:
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.backyard
+            show_state: false
+            type: picture-entity
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.side_yard
+            show_state: false
+            type: picture-entity
+        type: vertical-stack
+      - card:
+          aspect_ratio: 56%
+          camera_view: live
+          entity: camera.living_room
+          show_state: false
+          type: picture-entity
+        conditions:
+          - entity: camera.living_room
+            state: recording
+        type: conditional
+      - card:
+          aspect_ratio: 56%
+          camera_view: live
+          entity: camera.basement
+          show_state: false
+          type: picture-entity
+        conditions:
+          - entity: camera.basement
+            state: recording
+        type: conditional
+      - card:
+          aspect_ratio: 56%
+          camera_view: live
+          entity: camera.kitchen
+          show_state: false
+          type: picture-entity
+        conditions:
+          - entity: camera.kitchen
+            state: recording
+        type: conditional
+    icon: 'mdi:home'
+    path: home
+    title: Home
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: light.living_room_lamps
+                name: Lamps
+              - entity: light.media_center_lighting
+                name: Media Center Lighting
+              - entity: light.globe
+                name: Globe
+              - entity: light.living_room_ceiling_east
+                name: Ceiling (East)
+              - entity: light.living_room_ceiling_west
+                name: Ceiling (West)
+            show_header_toggle: false
+            title: Living Room
+            type: entities
+            state_color: true
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.fireplace
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: vacuum.main_floor_roomba
+                name: Roomba
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: lock.front_door
+                name: Door Lock
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: fan.living_room_east
+                name: East Fan
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: fan.living_room_west
+                name: West Fan
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.livingroom_rainbow
+                name: Random Colors
+            square: true
+          - cards:
+              - entity: sensor.living_room_temperature
+                graph: line
+                name: Temperature
+                type: sensor
+            type: horizontal-stack
+          - entities:
+              - entity: binary_sensor.front_door_opened
+              - entity: binary_sensor.living_room_occupancy
+                name: Occupancy
+              - entity: binary_sensor.living_room_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+          - entities:
+              - entity: sensor.living_room_nest_protect_color_status
+                name: Smoke Detector
+              - entity: sensor.living_room_light_level
+                name: Light Level
+            show_state: true
+            theme: default
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - type: grid
+            title: Media
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.living_room_tv_watch_tv
+                show_state: false
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.living_room_tv_play_xbox
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.living_room_tv_play_nintendo_switch
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.living_room_tv_play_sonos
+            columns: 4
+            square: false
+          - entities:
+              - entity: input_select.sonos
+            show_header_toggle: false
+            type: entities
+            footer:
+              type: buttons
+              entities:
+                - input_boolean.group_all_sonos
+          - cards:
+              - entity: media_player.living_room_appletv
+                type: media-control
+              - entity: media_player.sonos_living_room
+                type: media-control
+              - entity: media_player.sonos_surround_sound
+                type: media-control
+            type: vertical-stack
+        type: vertical-stack
+    icon: 'mdi:sofa'
+    path: living
+    title: Living
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: light.kitchen_ceiling
+                name: Ceiling
+              - entity: light.kitchen_cabinets
+                name: Cabinets
+              - entity: light.kitchen_sink
+                name: Sink
+            show_header_toggle: false
+            title: Kitchen
+            type: entities
+            state_color: true
+          - cards:
+              - entity: lock.back_door
+                hold_action:
+                  action: more-info
+                icon_height: 75px
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: entity-button
+                name: Door Lock
+            type: horizontal-stack
+          - cards:
+              - entity: sensor.kitchen_temperature
+                graph: line
+                name: Temperature
+                type: sensor
+            type: horizontal-stack
+          - entities:
+              - entity: binary_sensor.back_door_opened
+              - entity: binary_sensor.kitchen_occupancy
+                name: Occupancy
+              - entity: binary_sensor.kitchen_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: binary_sensor.kitchen_sink_water_sensor
+                name: Water Sensor
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+          - entities:
+              - entity: sensor.kitchen_nest_protect_color_status
+                name: Smoke Detector
+              - entity: sensor.kitchen_light_level
+                name: Light Level
+            show_state: true
+            theme: default
+            type: glance
+            state_color: true
+          - entity: media_player.sonos_kitchen
+            type: media-control
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: light.dining_room_table
+                name: Table
+              - entity: light.dining_room_ceiling
+                name: Ceiling
+            show_header_toggle: false
+            title: Dining Room
+            type: entities
+            state_color: true
+          - cards:
+              - entity: sensor.main_floor_temperature
+                graph: line
+                name: Temperature
+                type: sensor
+              - entity: sensor.main_floor_humidity
+                graph: line
+                name: Humidity
+                type: sensor
+            type: horizontal-stack
+          - entities:
+              - entity: binary_sensor.main_floor_occupancy
+                name: Occupancy
+              - entity: binary_sensor.dining_room_motion
+                name: Motion
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+          - entities:
+              - entity: sensor.hallway_nest_protect_color_status
+                name: Smoke Detector
+              - entity: sensor.dining_room_light_level
+                name: Light Level
+            show_state: true
+            theme: default
+            type: glance
+            state_color: true
+          - entity: media_player.sonos_dining_room
+            type: media-control
+        type: vertical-stack
+    icon: 'mdi:silverware-variant'
+    path: dining
+    title: Dining
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: light.USER1s_nightstand
+              - entity: light.USER2s_nightstand
+              - entity: light.bedroom_ceiling
+                name: Ceiling
+              - entity: light.bedroom_lamp
+                name: Lamp
+              - entity: light.closet_lamp
+                name: Closet Lamp
+              - entity: light.bedroom_closet_ceiling
+                name: Closet Ceiling
+              - entity: light.USER2s_bedroom_closet
+                name: USER2's Closet
+            show_header_toggle: false
+            title: Bedroom
+            type: entities
+            state_color: true
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: cover.bedroom_closet_blinds
+                name: Blinds
+                icon: 'mdi:blinds'
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.bedtime
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.bedroom_rainbow
+                name: Random Colors
+            square: true
+            columns: 3
+          - entity: sensor.bedroom_temperature
+            graph: line
+            name: Temperature
+            type: sensor
+          - entities:
+              - entity: binary_sensor.bedroom_occupancy
+                name: Occupancy
+              - entity: binary_sensor.USER2_bedroom_closet_motion
+                icon: 'mdi:run-fast'
+                name: Closet Motion
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+          - type: glance
+            entities:
+              - entity: cover.bedroom_closet_blinds_left
+                name: Left
+                icon: 'mdi:blinds'
+              - entity: cover.bedroom_closet_blinds_center
+                name: Center
+                icon: 'mdi:blinds'
+              - entity: cover.bedroom_closet_blinds_right
+                name: Right
+                icon: 'mdi:blinds'
+            show_state: false
+            state_color: true
+          - entities:
+              - entity: sensor.bedroom_nest_protect_color_status
+                name: Smoke Detector
+            show_state: true
+            theme: default
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: light.guest_bedroom_ceiling
+                name: Ceiling
+              - entity: light.guest_bedroom_nightstand
+                name: Nightstand
+            show_header_toggle: false
+            title: Guest Bedroom
+            type: entities
+            state_color: true
+          - entity: sensor.guest_bedroom_temperature
+            graph: line
+            name: Temperature
+            type: sensor
+          - entities:
+              - entity: binary_sensor.guest_bedroom_occupancy
+                name: Occupancy
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - type: grid
+            title: Media
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.bedroom_tv_watch_tv
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.bedroom_sonos_speech_enhance
+                name: Speech Enhance
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.bedroom_sonos_night_sound
+                name: Night Sound
+            square: false
+            columns: 3
+          - entity: media_player.sonos_bedroom
+            type: media-control
+          - type: media-control
+            entity: media_player.sonos_bedroom_closet
+          - entity: media_player.bedroom_apple_tv
+            type: media-control
+          - entity: media_player.guest_bedroom_apple_tv
+            type: media-control
+        type: vertical-stack
+    icon: 'mdi:bed'
+    path: bedrooms
+    title: Bedrooms
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: light.bathroom_vanity
+                name: Vanity Light
+              - entity: light.bathroom_shower
+                name: Shower Light
+            show_header_toggle: false
+            title: Bathroom
+            type: entities
+            state_color: true
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                graph: line
+                entity: sensor.bathroom_temperature
+                name: Temperature
+              - type: sensor
+                graph: line
+                entity: sensor.bathroom_humidity
+                name: Humidity
+          - entities:
+              - entity: binary_sensor.bathroom_occupancy
+                name: Occupancy
+              - entity: binary_sensor.bathroom_motion
+                name: Motion
+                icon: 'mdi:run-fast'
+              - entity: binary_sensor.bathroom_sink_water_sensor
+                name: Water Sensor
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+          - type: glance
+            entities:
+              - entity: sensor.bathroom_light_level
+                name: Light Level
+          - entity: media_player.sonos_bathroom
+            type: media-control
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: light.upstairs_bathroom_vanity
+                name: Vanity Light
+            show_header_toggle: false
+            title: Upstairs Bathroom
+            type: entities
+            state_color: true
+          - entities:
+              - entity: binary_sensor.upstairs_bathroom_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: binary_sensor.upstairs_bathrooom_water_sensor
+                name: Water Sensor
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+          - entities:
+              - entity: sensor.upstairs_bathroom_light_level
+                name: Light Level
+            show_state: true
+            theme: default
+            type: glance
+            state_color: true
+        type: vertical-stack
+    icon: 'mdi:shower'
+    path: bathrooms
+    title: Bathrooms
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: light.USER1_s_office_ceiling
+                name: Ceiling
+              - entity: light.office_lamp
+                name: Lamp
+            show_header_toggle: false
+            title: USER1's Office
+            type: entities
+            state_color: true
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: cover.USER1_s_office_blinds
+                name: Blinds
+                icon: 'mdi:blinds'
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: vacuum.upstairs_roomba
+                name: Roomba
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: fan.USER1s_office_fan
+                name: Fan
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.air_purifier
+                name: Air Purifier
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: climate.USER1s_office_fan
+                name: Heater
+                show_state: false
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.office_rainbow
+                name: Random Colors
+            square: true
+          - cards:
+              - entity: sensor.office_temperature
+                graph: line
+                name: Temperature
+                type: sensor
+              - entity: sensor.USER1s_office_fan_humidity
+                graph: line
+                name: Humidity
+                type: sensor
+            type: horizontal-stack
+          - entities:
+              - entity: binary_sensor.office_occupancy
+                name: Occupancy
+              - entity: binary_sensor.USER1s_office_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+          - type: glance
+            entities:
+              - entity: cover.USER1s_office_blinds_left
+                name: Left
+                icon: 'mdi:blinds'
+              - entity: cover.USER1s_office_blinds_center
+                name: Center
+                icon: 'mdi:blinds'
+              - entity: cover.USER1s_office_blinds_right
+                name: Right
+                icon: 'mdi:blinds'
+            show_state: false
+            state_color: true
+          - entities:
+              - entity: sensor.USER1s_office_light_level
+                name: Light Level
+            show_state: true
+            theme: default
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: light.USER2_s_office_ceiling
+                name: Ceiling
+            show_header_toggle: false
+            title: USER2's Office
+            type: entities
+            state_color: true
+          - type: button
+            tap_action:
+              action: toggle
+            entity: cover.USER2_s_office_blinds
+            icon: 'mdi:blinds'
+            name: Blinds
+            icon_height: 75px
+          - entity: sensor.USER2_office_temperature
+            graph: line
+            name: Temperature
+            type: sensor
+          - entities:
+              - entity: binary_sensor.USER2_office_occupancy
+                name: Occupancy
+              - entity: binary_sensor.USER2s_office_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+          - type: glance
+            entities:
+              - entity: cover.USER2s_office_blinds_left
+                name: Left
+                icon: 'mdi:blinds'
+              - entity: cover.USER2s_office_blinds_right
+                name: Right
+                icon: 'mdi:blinds'
+            show_state: false
+            show_name: true
+            state_color: true
+          - entities:
+              - entity: sensor.USER2s_office_light_level
+                name: Light Level
+            show_state: true
+            theme: default
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - type: grid
+            title: Media
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.USER1_s_office_tv_watch_tv
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.USER1_s_office_tv_play_xbox_one
+            columns: 2
+            square: false
+          - entity: media_player.USER1_s_office_apple_tv
+            type: media-control
+          - entity: media_player.sonos_USER1s_office
+            type: media-control
+          - entity: media_player.sonos_USER1s_office_move
+            type: media-control
+          - entity: media_player.sonos_USER2s_office
+            type: media-control
+        type: vertical-stack
+    icon: 'mdi:desk'
+    path: offices
+    title: Offices
+  - icon: 'mdi:stairs-down'
+    path: basements
+    title: Basement
+    badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: light.basement_stairs
+              - entity: light.basement_lights
+              - entity: light.work_bench_light
+            show_header_toggle: false
+            title: Basement
+            type: entities
+            state_color: true
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: vacuum.basement_roomba
+                name: Roomba
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.basement_heater
+                name: Heater
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: lock.basement_door
+                name: Door Lock
+            square: true
+          - cards:
+              - entity: sensor.basement_temperature
+                graph: line
+                name: Temperature
+                type: sensor
+            type: horizontal-stack
+          - entities:
+              - entity: binary_sensor.basement_door_opened
+              - entity: binary_sensor.basement_occupancy
+                name: Occupancy
+              - entity: binary_sensor.basement_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: binary_sensor.basement_drain_water_sensor_liquid_detected
+                name: Drain
+              - entity: binary_sensor.washing_machine_water_sensor
+                name: Washer
+              - entity: binary_sensor.utility_sink_water_sensor
+                name: Utiility Sink
+              - entity: binary_sensor.basement_door_water_sensor
+                name: Door
+              - entity: binary_sensor.coal_room_water_sensor
+                name: Coal Room
+              - entity: binary_sensor.sump_pump_water_sensor_liquid_detected
+                name: Sump Pump
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+            columns: 3
+          - entities:
+              - entity: switch.water_main
+              - entity: binary_sensor.sump_pump_status
+              - entity: sensor.basement_nest_protect_color_status
+                name: Smoke Alarm
+            type: glance
+            state_color: true
+            columns: 3
+          - type: media-control
+            entity: media_player.sonos_move
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: light.laundry_room_light
+            show_header_toggle: false
+            title: Laundry Room
+            type: entities
+            state_color: true
+          - entities:
+              - entity: sensor.washer
+              - entity: sensor.dryer
+            title: Laundry
+            type: glance
+            state_color: true
+          - card:
+              entity: sensor.washing_machine_time_remaining
+              type: entity
+            conditions:
+              - entity: sensor.washer
+                state: 'on'
+            type: conditional
+          - card:
+              entity: sensor.washer_error
+              type: entity
+            conditions:
+              - entity: binary_sensor.washer_error_state
+                state: 'on'
+            type: conditional
+          - card:
+              entities:
+                - entity: binary_sensor.washer_tub_clean_on
+              show_name: false
+              show_state: false
+              title: Run Washer Tub Clean
+              type: glance
+            conditions:
+              - entity: binary_sensor.washer_tub_clean_on
+                state: 'on'
+            type: conditional
+          - card:
+              entity: sensor.dryer_time_remaining
+              type: entity
+            conditions:
+              - entity: sensor.dryer
+                state: 'on'
+            type: conditional
+          - card:
+              entity: sensor.dryer_error
+              type: entity
+            conditions:
+              - entity: binary_sensor.dryer_error_state
+                state: 'on'
+            type: conditional
+          - cards:
+              - entity: sensor.laundry_room_temperature
+                graph: line
+                name: Temperature
+                type: sensor
+            type: horizontal-stack
+          - entities:
+              - entity: binary_sensor.laundry_room_occupancy
+                name: Occupancy
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - entity: light.craft_room_ceiling
+                name: Ceiling
+            title: Craft Room
+            state_color: true
+            show_header_toggle: false
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                graph: line
+                entity: sensor.craft_room_temperature
+                name: Temperature
+              - type: sensor
+                graph: line
+                entity: sensor.craft_room_humidity
+                name: Humidity
+          - type: glance
+            entities:
+              - entity: binary_sensor.craft_room_motion
+                name: Motion
+                icon: 'mdi:run-fast'
+            show_state: false
+          - type: glance
+            entities:
+              - entity: sensor.craft_room_light_level
+                name: Light Level
+          - type: media-control
+            entity: media_player.craft_room_apple_tv
+          - type: media-control
+            entity: media_player.sonos_craft_room
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - entity: light.fitness_room_ceiling
+                name: Ceiling
+            title: Fitness Room
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                graph: line
+                entity: sensor.fitness_room_temperature
+                name: Temperature
+              - type: sensor
+                graph: line
+                entity: sensor.fitness_room_humidity
+                name: Humidity
+          - type: glance
+            entities:
+              - entity: binary_sensor.fitness_room_motion
+                name: Motion
+                icon: 'mdi:run-fast'
+            show_state: false
+          - type: glance
+            entities:
+              - entity: sensor.fitness_room_light_level
+                name: Light Level
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.fitness_room_sonos_speech_enhance
+                name: Speech Enhance
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.fitness_room_sonos_night_sound
+                name: Night Sound
+            square: false
+            columns: 2
+          - type: media-control
+            entity: media_player.fitness_room_apple_tv
+          - type: media-control
+            entity: media_player.sonos_fitness_room
+  - title: Upstairs
+    path: upstairs
+    icon: 'mdi:stairs-up'
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - entity: light.stairs_light
+            title: Upstairs
+            state_color: true
+          - type: button
+            tap_action:
+              action: toggle
+            entity: cover.stairs_blinds
+            name: Blinds
+            icon_height: 75px
+            icon: 'mdi:blinds'
+          - type: glance
+            entities:
+              - entity: binary_sensor.stairs_motion
+                name: Motion
+                icon: 'mdi:run-fast'
+            show_state: false
+            state_color: true
+          - type: glance
+            entities:
+              - entity: cover.stairs_blinds_left
+                name: Left
+                icon: 'mdi:blinds'
+              - entity: cover.stairs_blinds_right
+                name: Right
+                icon: 'mdi:blinds'
+            show_state: false
+            state_color: true
+          - entities:
+              - entity: sensor.upstairs_nest_protect_color_status
+                name: Smoke Detector
+              - entity: sensor.stairs_light_level
+                name: Light Level
+            show_state: true
+            theme: default
+            type: glance
+            state_color: true
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: light.front_porch
+              - entity: light.back_door
+              - entity: light.backyard_deck
+              - entity: light.backyard_patio
+              - entity: light.garage_light
+              - entity: switch.front_yard_lighting
+                state_color: true
+              - entity: switch.backyard_lighting
+                state_color: true
+            title: Exterior Lights
+            type: entities
+            state_color: true
+          - entities:
+              - sensor.holidays_calendar
+              - input_select.holiday
+              - input_boolean.interior_holiday
+            show_header_toggle: false
+            title: Holiday Modes
+            type: entities
+            state_color: true
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.bug_zapper
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.front_porch_rainbow
+                name: Random Colors
+            square: false
+            columns: 2
+          - entities:
+              - entity: binary_sensor.ring_front_door_ding
+                name: Doorbell
+              - entity: binary_sensor.ring_front_door_motion
+                icon: 'mdi:run-fast'
+                name: Doorbell Motion
+            show_state: false
+            theme: default
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - entity: media_player.sonos_backyard_patio
+        type: media-control
+    icon: 'mdi:tree'
+    path: outdoors
+    title: Outdoors
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: light.garage_light
+                name: Garage Light
+              - entity: light.garage_interior
+                name: Interior Light
+            show_header_toggle: false
+            title: Garage
+            type: entities
+            state_color: true
+          - cards:
+              - entity: cover.garage_door
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: entity-button
+            type: horizontal-stack
+          - cards:
+              - entity: sensor.garage_temperature
+                graph: line
+                name: Temperature
+                type: sensor
+            type: horizontal-stack
+        type: vertical-stack
+      - camera_view: live
+        entity: camera.garage
+        show_state: false
+        type: picture-entity
+    icon: 'mdi:garage-variant'
+    path: garage
+    title: Garage
+    visible:
+      - user: REDACTED
+  - badges: []
+    cards:
+      - cards:
+          - entity: climate.main_floor
+            type: thermostat
+          - cards: null
+            entities:
+              - entity: input_select.thermostat_mode
+            type: entities
+          - type: glance
+            entities:
+              - entity: sensor.season
+            show_name: false
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: more-info
+                entity: climate.USER1s_office_fan
+                name: USER1's Office
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.basement_heater
+            columns: 2
+            square: false
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: sensor.living_room_temperature
+                name: Living Room
+              - entity: sensor.main_floor_temperature
+                name: Dining Room
+              - entity: sensor.kitchen_temperature
+                name: Kitchen
+              - entity: sensor.bedroom_temperature
+                name: Bedroom
+              - entity: sensor.bathroom_temperature
+                name: Bathroom
+              - entity: sensor.office_temperature
+                name: USER1's Office
+              - entity: sensor.USER2_office_temperature
+                name: USER2's Office
+              - entity: sensor.guest_bedroom_temperature
+                name: Guest Bedroom
+              - entity: sensor.basement_temperature
+                name: Basement
+              - entity: sensor.laundry_room_temperature
+                name: Laundry Room
+              - entity: sensor.craft_room_temperature
+                name: Craft Room
+              - entity: sensor.fitness_room_temperature
+                name: Fitness Room
+              - entity: sensor.garage_temperature
+                name: Garage
+            show_header_toggle: false
+            title: Indoor Temperature
+            type: entities
+            state_color: true
+          - entities:
+              - entity: sensor.main_floor_humidity
+                name: Dining Room
+              - entity: sensor.bathroom_humidity
+                name: Bathroom
+              - entity: sensor.USER1s_office_fan_humidity
+                name: USER1's Office
+              - entity: sensor.craft_room_humidity
+                name: Craft Room
+              - entity: sensor.fitness_room_humidity
+                name: Fitness Room
+              - entity: sensor.REDACTED_humidity
+                name: Outdoor
+            title: Humidity
+            type: glance
+            state_color: true
+            columns: 3
+        type: vertical-stack
+      - cards:
+          - entity: weather.REDACTED
+            type: weather-forecast
+          - image: 'https://s.w-x.co/staticmaps/wu/wu/wxtype1200_cur/usjef/animate.png'
+            type: picture
+        type: vertical-stack
+    icon: 'mdi:weather-partly-lightning'
+    path: weatherdashboard
+    title: Weather
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: input_select.living_room_tv_remote
+                name: Living Room TV
+              - entity: input_select.bedroom_tv_remote
+                name: Bedroom TV
+              - entity: input_select.USER1_s_office_tv_remote
+                name: USER1's Office TV
+              - entity: input_select.sonos
+            show_header_toggle: false
+            title: Remote
+            type: entities
+            footer:
+              type: buttons
+              entities:
+                - input_boolean.group_all_sonos
+          - entities:
+              - entity: sensor.plex_REDACTED
+            show_header_toggle: false
+            type: entities
+          - entity: media_player.surround_sound_receiver
+            type: media-control
+        type: vertical-stack
+      - cards:
+          - entity: media_player.living_room_appletv
+            type: media-control
+          - entity: media_player.bedroom_apple_tv
+            type: media-control
+          - entity: media_player.USER1_s_office_apple_tv
+            type: media-control
+          - entity: media_player.guest_bedroom_apple_tv
+            type: media-control
+          - type: media-control
+            entity: media_player.craft_room_apple_tv
+          - type: media-control
+            entity: media_player.fitness_room_apple_tv
+        type: vertical-stack
+      - cards:
+          - entity: media_player.sonos_surround_sound
+            type: media-control
+          - entity: media_player.sonos_living_room
+            type: media-control
+          - entity: media_player.sonos_dining_room
+            type: media-control
+          - entity: media_player.sonos_kitchen
+            type: media-control
+          - entity: media_player.sonos_bathroom
+            type: media-control
+          - entity: media_player.sonos_bedroom
+            type: media-control
+          - type: media-control
+            entity: media_player.sonos_bedroom_closet
+        type: vertical-stack
+      - cards:
+          - entity: media_player.sonos_USER1s_office
+            type: media-control
+          - entity: media_player.sonos_USER1s_office_move
+            type: media-control
+          - entity: media_player.sonos_USER2s_office
+            type: media-control
+          - entity: media_player.sonos_move
+            type: media-control
+          - type: media-control
+            entity: media_player.sonos_craft_room
+          - type: media-control
+            entity: media_player.sonos_fitness_room
+          - entity: media_player.sonos_backyard_patio
+            type: media-control
+        type: vertical-stack
+    icon: 'mdi:play-circle-outline'
+    path: media
+    title: Media
+    visible:
+      - user: REDACTED
+  - badges: []
+    cards:
+      - cards:
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.front_porch
+            show_state: false
+            type: picture-entity
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.backyard_gate
+            show_state: false
+            type: picture-entity
+        type: vertical-stack
+      - cards:
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.driveway
+            show_state: false
+            type: picture-entity
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.garage
+            show_state: false
+            type: picture-entity
+        type: vertical-stack
+      - cards:
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.backyard
+            show_state: false
+            type: picture-entity
+          - aspect_ratio: 56%
+            camera_view: live
+            entity: camera.side_yard
+            show_state: false
+            type: picture-entity
+        type: vertical-stack
+      - card:
+          aspect_ratio: 56%
+          camera_view: live
+          entity: camera.living_room
+          show_state: false
+          type: picture-entity
+        conditions:
+          - entity: camera.living_room
+            state: recording
+        type: conditional
+      - aspect_ratio: 56%
+        entity: camera.front_door
+        show_state: false
+        type: picture-entity
+      - card:
+          aspect_ratio: 56%
+          camera_view: live
+          entity: camera.basement
+          show_state: false
+          type: picture-entity
+        conditions:
+          - entity: camera.basement
+            state: recording
+        type: conditional
+      - card:
+          aspect_ratio: 56%
+          camera_view: live
+          entity: camera.kitchen
+          show_state: false
+          type: picture-entity
+        conditions:
+          - entity: camera.kitchen
+            state: recording
+        type: conditional
+    icon: 'mdi:cctv'
+    path: cameras
+    title: Cameras
+    visible:
+      - user: REDACTED
+  - badges: []
+    cards:
+      - cards:
+          - entity: alarm_control_panel.alarm
+            states:
+              - arm_home
+              - arm_away
+            type: alarm-panel
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.panic_mode
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.siren
+                show_state: false
+            square: false
+            columns: 2
+        type: vertical-stack
+      - cards:
+          - columns: 3
+            entities:
+              - entity: binary_sensor.living_room_motion
+                name: Living Room
+              - entity: binary_sensor.dining_room_motion
+                name: Dining Room
+              - entity: binary_sensor.kitchen_motion
+                name: Kitchen
+              - entity: binary_sensor.bathroom_motion
+                name: Bathroom
+              - entity: binary_sensor.USER1s_office_motion
+                name: USER1's Office
+              - entity: binary_sensor.USER2s_office_motion
+                name: USER2's Office
+              - entity: binary_sensor.stairs_motion
+                name: Stairs
+              - entity: binary_sensor.upstairs_bathroom_motion
+                name: Upstairs Bathroom
+              - entity: binary_sensor.USER2_bedroom_closet_motion
+                name: USER2's Closet
+              - entity: binary_sensor.basement_motion
+                name: Basement
+              - entity: binary_sensor.craft_room_motion
+                name: Craft Room
+              - entity: binary_sensor.fitness_room_motion
+                name: Fitness Room
+            show_state: false
+            title: Motion
+            type: glance
+            state_color: true
+          - entities:
+              - entity: binary_sensor.front_door_opened
+              - entity: binary_sensor.back_door_opened
+              - entity: binary_sensor.basement_door_opened
+            show_state: false
+            title: Doors
+            type: glance
+            state_color: true
+          - columns: 3
+            entities:
+              - entity: binary_sensor.motion_front_porch
+                icon: 'mdi:door-closed'
+                name: Front Porch
+              - entity: binary_sensor.motion_driveway
+                icon: 'mdi:car'
+                name: Driveway
+              - entity: binary_sensor.motion_garage
+                icon: 'mdi:garage-variant'
+                name: Garage
+              - entity: binary_sensor.motion_backyard_gate
+                icon: 'mdi:gate'
+                name: Backyard Gate
+              - entity: binary_sensor.motion_backyard
+                icon: 'mdi:flower'
+                name: Backyard
+              - entity: binary_sensor.motion_side_yard
+                icon: 'mdi:grass'
+                name: Side Yard
+            show_state: false
+            title: Camera Motion
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: lock.front_door
+                name: Front Door
+              - entity: lock.back_door
+                name: Back Door
+              - entity: lock.basement_door
+                name: Basement Door
+            title: Locks
+            type: glance
+            state_color: true
+          - entities:
+              - entity: binary_sensor.ring_front_door_ding
+                name: Ring
+              - entity: binary_sensor.ring_front_door_motion
+                name: Motion
+            show_state: false
+            title: Doorbell
+            type: glance
+            state_color: true
+          - columns: 2
+            entities:
+              - entity: binary_sensor.living_room_occupancy
+                icon: 'mdi:sofa'
+                name: Living Room
+              - entity: binary_sensor.main_floor_occupancy
+                icon: 'mdi:silverware'
+                name: Dining Room
+              - entity: binary_sensor.kitchen_occupancy
+                icon: 'mdi:fridge-outline'
+                name: Kitchen
+              - entity: binary_sensor.bedroom_occupancy
+                icon: 'mdi:bed'
+                name: Bedroom
+              - entity: binary_sensor.bathroom_occupancy
+                icon: 'mdi:shower'
+                name: Bathroom
+              - entity: binary_sensor.office_occupancy
+                icon: 'mdi:desk'
+                name: USER1's Office
+              - entity: binary_sensor.USER2_office_occupancy
+                icon: 'mdi:desk'
+                name: USER2's Office
+              - entity: binary_sensor.guest_bedroom_occupancy
+                icon: 'mdi:bed'
+                name: Guest Bedroom
+              - entity: binary_sensor.basement_occupancy
+                icon: 'mdi:stairs'
+                name: Basement
+              - entity: binary_sensor.laundry_room_occupancy
+                icon: 'mdi:washing-machine'
+                name: Laundry Room
+            show_name: true
+            show_state: false
+            title: Occupancy
+            type: glance
+            state_color: true
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: sensor.living_room_nest_protect_smoke_status
+                name: Living Room
+              - entity: sensor.kitchen_nest_protect_smoke_status
+                name: Kitchen
+              - entity: sensor.bedroom_nest_protect_smoke_status
+                name: Bedroom
+              - entity: sensor.hallway_nest_protect_smoke_status
+                name: Hallway
+              - entity: sensor.upstairs_nest_protect_smoke_status
+                name: Upstairs
+              - entity: sensor.basement_nest_protect_smoke_status
+                name: Basement
+            show_header_toggle: false
+            title: Smoke Detector
+            type: entities
+            state_color: true
+          - entities:
+              - entity: sensor.living_room_nest_protect_co_status
+                name: Living Room
+              - entity: sensor.kitchen_nest_protect_co_status
+                name: Kitchen
+              - entity: sensor.bedroom_nest_protect_co_status
+                name: Bedroom
+              - entity: sensor.hallway_nest_protect_co_status
+                name: Hallway
+              - entity: sensor.upstairs_nest_protect_co_status
+                name: Upstairs
+              - entity: sensor.basement_nest_protect_co_status
+                name: Basement
+            show_header_toggle: false
+            title: Carbon Monoxide Detector
+            type: entities
+            state_color: true
+          - cards:
+              - entity: switch.disable_smoke_alarm
+                hold_action:
+                  action: more-info
+                icon: 'mdi:fire-truck'
+                icon_height: 90px
+                name: Disable Fire Alarm
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: entity-button
+            type: horizontal-stack
+        type: vertical-stack
+    icon: 'mdi:shield-home'
+    title: Alarm
+    visible:
+      - user: REDACTED
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: person.USER1
+              - entity: person.USER2
+            title: Household
+            type: glance
+          - entities:
+              - entity: sensor.USER1_to_home
+              - entity: sensor.USER2_to_home
+              - entity: sensor.USER2_to_REDACTED
+            show_header_toggle: false
+            title: Travel Times
+            type: entities
+          - entities:
+              - icon: 'mdi:cctv'
+                name: REDACTED
+                type: weblink
+                url: >-
+                  http://REDACTED/rtplive/REDACTED/playlist.m3u8
+              - icon: 'mdi:cctv'
+                name: REDACTED
+                type: weblink
+                url: >-
+                  http://REDACTED/rtplive/REDACTED/playlist.m3u8
+              - icon: 'mdi:cctv'
+                name: REDACTED
+                type: weblink
+                url: >-
+                  http://REDACTED/rtplive/REDACTED/playlist.m3u8
+              - icon: 'mdi:cctv'
+                name: REDACTED
+                type: weblink
+                url: >-
+                  http://REDACTED/rtplive/REDACTED/playlist.m3u8
+              - icon: 'mdi:cctv'
+                name: REDACTED
+                type: weblink
+                url: >-
+                  http://REDACTED/rtplive/REDACTED/playlist.m3u8
+            show_header_toggle: false
+            title: Traffic Cameras
+            type: entities
+        type: vertical-stack
+      - dark_mode: false
+        entities:
+          - entity: person.USER1
+          - entity: person.USER2
+          - entity: zone.home
+        hours_to_show: 24
+        title: Map
+        type: map
+    icon: 'mdi:map-marker-radius'
+    path: auto
+    title: Location
+  - badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: glance
+            entities:
+              - entity: switch.3d_printer
+                name: Power
+              - entity: light.3d_printer_lamp
+                name: Light
+            title: 3D Printer
+          - type: conditional
+            conditions:
+              - entity: switch.3d_printer
+                state: 'on'
+            card:
+              type: glance
+              entities:
+                - entity: sensor.3d_printer_current_state
+                  name: Status
+                - entity: sensor.3d_printer_job_percentage
+                  name: Complete
+                  icon: 'mdi:printer-3d-nozzle'
+                - entity: sensor.3d_printer_time_remaining_format
+                  name: Remaining
+                  icon: 'mdi:clock-outline'
+                - entity: sensor.3d_printer_time_elapsed_format
+                  name: Elapsed
+                  icon: 'mdi:clock-outline'
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.3d_printer_printing_error
+                state: 'on'
+            card:
+              type: glance
+              entities:
+                - entity: binary_sensor.3d_printer_printing_error
+              show_state: false
+              state_color: true
+          - type: conditional
+            conditions:
+              - entity: switch.3d_printer
+                state: 'on'
+            card:
+              type: history-graph
+              entities:
+                - entity: sensor.3d_printer_actual_bed_temp
+                  name: Bed
+                - entity: sensor.3d_printer_target_bed_temp
+                  name: Bed (Target)
+                - entity: sensor.3d_printer_actual_tool0_temp
+                  name: Nozzel
+                - entity: sensor.3d_printer_target_tool0_temp
+                  name: Nozzel (Target)
+              hours_to_show: 6
+              refresh_interval: 0
+          - type: conditional
+            conditions:
+              - entity: switch.3d_printer
+                state: 'on'
+            card:
+              type: picture-entity
+              entity: camera.3d_printer
+              camera_image: camera.3d_printer
+              camera_view: live
+              show_state: false
+      - cards:
+          - cards:
+              - entities:
+                  - entity: sensor.server_uptime
+                    name: Uptime
+                theme: default
+                title: Server
+                type: glance
+              - cards:
+                  - entity: sensor.processor_use
+                    max: 100
+                    min: 0
+                    name: CPU
+                    severity:
+                      green: 0
+                      red: 90
+                      yellow: 50
+                    theme: default
+                    type: gauge
+                  - entity: sensor.memory_use_percent
+                    max: 100
+                    min: 0
+                    name: Memory
+                    severity:
+                      green: 0
+                      red: 90
+                      yellow: 50
+                    theme: default
+                    type: gauge
+                type: horizontal-stack
+            type: vertical-stack
+          - cards:
+              - entities:
+                  - entity: sensor.ups_status
+                    name: Status
+                  - entity: sensor.ups_battery_runtime_mins
+                    name: Runtime
+                  - entity: sensor.ups_input_voltage
+                    name: Voltage
+                theme: default
+                title: UPS
+                type: glance
+              - cards:
+                  - entity: sensor.ups_battery_charge
+                    max: 100
+                    min: 0
+                    name: Battery
+                    severity:
+                      green: 60
+                      red: 0
+                      yellow: 20
+                    theme: default
+                    type: gauge
+                  - entity: sensor.ups_load
+                    max: 100
+                    min: 0
+                    name: Load
+                    severity:
+                      green: 0
+                      red: 90
+                      yellow: 50
+                    theme: default
+                    type: gauge
+                type: horizontal-stack
+            type: vertical-stack
+        type: vertical-stack
+      - cards:
+          - cards:
+              - entities:
+                  - entity: sensor.nas_status
+                    name: Status
+                  - entity: sensor.nas_smart_status_drive_0_1
+                    name: Disk 1
+                  - entity: sensor.nas_smart_status_drive_0_2
+                    name: Disk 2
+                  - entity: sensor.nas_smart_status_drive_0_3
+                    name: Disk 3
+                  - entity: sensor.nas_smart_status_drive_0_4
+                    name: Disk 4
+                theme: default
+                title: NAS
+                type: glance
+              - cards:
+                  - entity: sensor.nas_cpu_usage
+                    max: 100
+                    min: 0
+                    name: CPU
+                    severity:
+                      green: 0
+                      red: 90
+                      yellow: 50
+                    theme: default
+                    type: gauge
+                  - entity: sensor.nas_memory_usage
+                    max: 100
+                    min: 0
+                    name: Memory
+                    severity:
+                      green: 0
+                      red: 90
+                      yellow: 50
+                    theme: default
+                    type: gauge
+                type: horizontal-stack
+              - cards:
+                  - entity: sensor.nas_volume_used_storage
+                    max: 100
+                    min: 0
+                    name: Storage
+                    severity:
+                      green: 0
+                      red: 90
+                      yellow: 50
+                    theme: default
+                    type: gauge
+                  - entity: sensor.nas_system_temperature
+                    max: 200
+                    min: 0
+                    name: Temperature
+                    severity:
+                      green: 0
+                      red: 130
+                      yellow: 100
+                    theme: default
+                    type: gauge
+                type: horizontal-stack
+            type: vertical-stack
+          - type: glance
+            entities:
+              - entity: sensor.printer
+                name: Status
+              - entity: sensor.printer_black_cartridge
+                name: Black
+              - entity: sensor.printer_cyan_cartridge
+                name: Cyan
+              - entity: sensor.printer_magenta_cartridge
+                name: Magenta
+              - entity: sensor.printer_yellow_cartridge
+                name: Yellow
+            title: Printer
+            state_color: true
+        type: vertical-stack
+      - type: vertical-stack
+        cards:
+          - entities:
+              - entity: binary_sensor.wan
+              - entity: binary_sensor.gateway
+              - entity: binary_sensor.REDACTED_vpn
+              - entity: binary_sensor.REDACTED_vpn
+              - entity: binary_sensor.REDACTED_vpn
+              - entity: switch.att_router
+              - entity: group.pihole
+            show_header_toggle: false
+            title: Network
+            type: entities
+          - entities:
+              - entity: input_boolean.disable_climate
+              - entity: input_boolean.disable_notifications
+              - entity: input_boolean.disable_roomba
+              - entity: input_boolean.disable_doorbell
+              - entity: input_boolean.disable_door_open_lights_on
+              - entity: input_boolean.disable_exterior_on_sunset
+              - entity: input_boolean.disable_exterior_off_night
+              - entity: input_boolean.disable_auto_garage
+              - entity: input_boolean.disable_home_away
+              - entity: input_boolean.disable_interior_lights_sunset
+              - entity: input_boolean.disable_lock_unlock_doors
+              - entity: input_boolean.disable_media_lights
+              - entity: input_boolean.disable_motion
+              - entity: input_boolean.disable_blinds
+              - entity: input_boolean.disable_occupancy
+              - entity: input_boolean.disable_rainy_day
+              - entity: input_boolean.disable_water_automations
+            show_header_toggle: false
+            title: Automation Override
+            type: entities
+            state_color: true
+    icon: 'mdi:server'
+    path: equipment
+    title: System Equipment
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: sensor.ring_front_door_battery
+                name: Ring Doorbell
+            show_header_toggle: false
+            title: Door Bell
+            type: entities
+          - entities:
+              - entity: sensor.main_floor_roomba_battery_level
+              - entity: sensor.upstairs_roomba_battery_level
+              - entity: sensor.basement_roomba_battery_level
+            show_header_toggle: false
+            title: Vacuums
+            type: entities
+          - entities:
+              - entity: sensor.front_door_lock_batt
+                name: Front Door
+              - entity: sensor.back_door_lock_batt
+                name: Back Door
+              - entity: sensor.basement_door_lock_batt
+                name: Basement Door
+            show_header_toggle: false
+            title: Door Locks
+            type: entities
+          - entities:
+              - entity: sensor.front_door_sensor_batt
+                name: Front Door
+              - entity: sensor.back_door_sensor_batt
+                name: Back Door
+              - entity: sensor.basement_door_sensor_batt
+                name: Basement Door
+            show_header_toggle: false
+            title: Door Sensors
+            type: entities
+          - entities:
+              - entity: sensor.siren_batt
+                name: Siren
+            show_header_toggle: false
+            title: Alarm
+            type: entities
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: sensor.living_room_motion_batt
+                name: Living Room
+              - entity: sensor.dining_room_motion_batt
+                name: Dining Room
+              - entity: sensor.kitchen_motion_batt
+                name: Kitchen
+              - entity: sensor.bathroom_motion_batt
+                name: Bathroom
+              - entity: sensor.USER1s_office_motion_batt
+                name: USER1's Office
+              - entity: sensor.USER2s_office_motion_batt
+                name: USER2's Office
+              - entity: sensor.stairs_motion_batt
+                name: Stairs
+              - entity: sensor.upstairs_bath_motion_batt
+                name: Upstairs Bathroom
+              - entity: sensor.basement_motion_batt
+                name: Basement
+              - entity: sensor.craft_room_motion_batt
+                name: Craft Room
+              - entity: sensor.fitness_room_motion_batt
+                name: Fitness Room
+              - entity: sensor.USER2s_closet_motion_batt
+                name: USER2's Closet
+            show_header_toggle: false
+            title: Motion Sensors
+            type: entities
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: sensor.basement_drain_water_sensor_batt
+                name: Basement Drain
+              - entity: sensor.sump_pump_water_sensor_batt
+                name: Sump Pump
+              - entity: sensor.kitchen_sink_water_sensor_batt
+                name: Kitchen Sink
+              - entity: sensor.bathroom_sink_water_sensor_batt
+                name: Bathroom Sink
+              - entity: sensor.upstairs_bathroom_water_sensor_batt
+                name: Upstairs Bathroom Sink
+              - entity: sensor.utility_sink_water_sensor_batt
+                name: Utility Sink
+              - entity: sensor.washing_machine_water_sensor_batt
+                name: Washing Machine
+              - entity: sensor.coal_room_water_sensor_batt
+                name: Coal Room
+              - entity: sensor.basement_door_water_sensor_batt
+                name: Basement Door
+            show_header_toggle: false
+            title: Water Sensors
+            type: entities
+          - entities:
+              - entity: sensor.living_room_nest_protect_battery_health
+              - entity: sensor.bedroom_nest_protect_battery_health
+              - entity: sensor.hallway_nest_protect_battery_health
+              - entity: sensor.kitchen_nest_protect_battery_health
+              - entity: sensor.upstairs_nest_protect_battery_health
+              - entity: sensor.basement_nest_protect_battery_health
+            show_header_toggle: false
+            title: Smoke Detectors
+            type: entities
+        type: vertical-stack
+    icon: 'mdi:battery-charging-100'
+    title: Battery Levels
+    visible:
+      - user: REDACTED
+  - icon: 'mdi:cog'
+    path: troubleshoot
+    title: Troubleshoot
+    visible:
+      - user: REDACTED
+    badges: []
+    cards:
+      - cards:
+          - card:
+              title: Offline Devices
+              type: entities
+            filter:
+              include:
+                - state: unavailable
+            show_empty: false
+            type: 'custom:auto-entities'
+          - card:
+              show_header_toggle: false
+              title: Disabled Automations
+              type: entities
+            filter:
+              exclude:
+                - state: 'on'
+                - state: unavailable
+              include:
+                - domain: automation
+            show_empty: false
+            type: 'custom:auto-entities'
+          - card:
+              show_header_toggle: false
+              title: Input Boolean
+              type: entities
+            filter:
+              exclude:
+                - state: 'off'
+                - state: unavailable
+              include:
+                - domain: input_boolean
+            show_empty: false
+            type: 'custom:auto-entities'
+        type: vertical-stack
+      - cards:
+          - card:
+              show_header_toggle: false
+              title: Device Trackers
+              type: entities
+            filter:
+              include:
+                - entity_id: device_tracker.*
+            show_empty: false
+            type: 'custom:auto-entities'
+          - cards:
+              - entity: sensor.USER1_s_iphone_geocoded_location
+                name: USER1's Location
+                type: sensor
+              - entity: sensor.USER2_s_iphone_geocoded_location
+                name: USER2's Location
+                type: sensor
+            type: vertical-stack
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: sun.sun
+              - entity: sensor.season
+            type: glance
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: binary_sensor.bond_home_hub
+              - entity: switch.bond_home_hub
+              - entity: switch.ikea_hub
+            show_header_toggle: false
+            title: Hubs
+            type: entities
+          - entities:
+              - entity: switch.living_room_ceiling_fan
+              - entity: group.living_room_fans
+              - entity: script.living_room_fan_light_dimmer
+            title: Fans
+            type: entities
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: binary_sensor.garage_door_sensor
+              - entity: switch.garage_door_switch
+              - entity: input_boolean.garage_door_motor
+              - entity: cover.garage_door
+              - entity: sensor.garage_temperature
+              - entity: switch.garage_fan
+            show_header_toggle: false
+            title: Garage
+            type: entities
+          - entities:
+              - entity: sensor.garage_temperature
+              - entity: sensor.REDACTED_temperature
+            hours_to_show: 24
+            refresh_interval: 0
+            type: history-graph
+        type: vertical-stack
+      - entities:
+          - entity: switch.living_room_camera
+          - entity: switch.basement_camera
+        title: Indoor Cameras
+        type: entities
+      - entities:
+          - entity: sensor.living_room_light_remote
+          - entity: sensor.living_room_fan_remote
+          - entity: sensor.living_room_sonos_in_wall
+          - entity: sensor.living_room_sonos_remote
+          - entity: sensor.bedroom_light_remote
+          - entity: sensor.kitchen_sonos_in_wall
+          - entity: sensor.upstairs_hallway_light_switch
+          - entity: sensor.basement_stairs_light_switch
+          - entity: sensor.guest_bedroom_light_remote
+        title: Pico Remotes
+        type: entities
+      - card:
+          entity: media_player.plex_living_room_appletv
+          type: media-control
+        conditions:
+          - entity: media_player.plex_living_room_appletv
+            state: playing
+        type: conditional
+      - type: vertical-stack
+        cards:
+          - type: media-control
+            entity: media_player.living_room_tv
+          - type: media-control
+            entity: media_player.bedroom_tv
+      - type: entities
+        entities:
+          - entity: binary_sensor.3d_printer_printing
+          - entity: sensor.3d_printer_actual_bed_temp
+          - entity: sensor.3d_printer_actual_tool0_temp

@@ -1,0 +1,215 @@
+#################################################################
+## iOS Actions
+#################################################################
+
+        #################################################################
+        ## Bedtime
+        #################################################################
+
+- alias: iOS Action - Bedtime
+  id: 'ios_action_bedtime'
+
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: 'Bedtime'
+
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - input_boolean.bedtime
+
+        #################################################################
+        ## Arm Alarm Home
+        #################################################################
+
+- alias: iOS Action - Arm Alarm Home
+  id: 'ios_action_arm_alarm_home'
+
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: 'Arm Alarm Home'
+
+  action:
+    - service: alarm_control_panel.alarm_arm_home
+      entity_id: alarm_control_panel.alarm
+
+        #################################################################
+        ## Arm Alarm Away
+        #################################################################
+
+- alias: iOS Action - Arm Alarm Away
+  id: 'ios_action_arm_alarm_away'
+
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: 'Arm Alarm Away'
+
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.alarm
+
+        #################################################################
+        ## Disarm Alarm
+        #################################################################
+
+- alias: iOS Action - Disarm Alarm
+  id: 'ios_action_disarm_alarm'
+
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: 'Disarm Alarm'
+
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.alarm
+
+#################################################################
+## iOS Actionable Notifications
+#################################################################
+
+        #################################################################
+        ## Unlock Doors
+        #################################################################
+
+- alias: iOS Action - Unlock Doors
+  id: 'ios_action_unlock_doors'
+
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "unlock_doors"
+
+  action:
+    - service: lock.unlock
+      entity_id:
+        - lock.back_door
+        - lock.front_door
+
+        #################################################################
+        ## Unlock Front Door
+        #################################################################
+
+- alias: iOS Action - Unlock Front Door
+  id: 'ios_action_unlock_front_door'
+
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "unlock_front_door"
+
+  action:
+    - service: lock.unlock
+      entity_id:
+        - lock.front_door
+
+        #################################################################
+        ## Close Garage
+        #################################################################
+
+- alias: iOS Action - Close Garage
+  id: 'ios_action_close_garage'
+
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "close_garage"
+
+  action:
+    - service: cover.close_cover
+      entity_id: cover.garage_door
+
+        #################################################################
+        ## Open Garage
+        #################################################################
+
+- alias: iOS Action - Open Garage
+  id: 'ios_action_open_garage'
+
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "open_garage"
+
+  action:
+    - service: cover.open_cover
+      entity_id: cover.garage_door
+
+        #################################################################
+        ## Disarm Alarm
+        #################################################################
+
+- alias: iOS Action - Silence Alarm
+  id: 'ios_action_silence_alarm'
+
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "disarm_alarm"
+
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.alarm
+
+        #################################################################
+        ## Enable Alarm
+        #################################################################
+
+- alias: iOS Action - Enable Alarm
+  id: 'ios_action_enable_alarm'
+
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "arm_alarm"
+
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.alarm
+
+        #################################################################
+        ## Siren Off
+        #################################################################
+
+- alias: iOS Action - Siren
+  id: 'ios_action_siren'
+
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "siren_off"
+
+  action:
+    - service: switch.turn_off
+      entity_id: switch.siren
+
+        #################################################################
+        ## Fireplace Off
+        #################################################################
+
+- alias: iOS Action - Fireplace Off
+  id: 'ios_action_fireplace_off'
+
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "fireplace_off"
+
+  action:
+    - service: switch.turn_off
+      entity_id: switch.fireplace

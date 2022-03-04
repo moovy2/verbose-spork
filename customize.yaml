@@ -1,0 +1,949 @@
+#################################################################
+## Customize
+#################################################################
+
+#################################################################
+## Climate
+#################################################################
+
+        ##########################################################
+        ## Climate Mode
+        ##########################################################
+
+  sensor.thermostat_climate_mode:
+    icon: mdi:thermostat-box
+
+        ##########################################################
+        ## Dyson Fan Heater
+        ##########################################################
+
+  climate.office_fan:
+    icon: mdi:radiator
+    friendly_name: Office Heater
+
+        ##########################################################
+        ## Dyson Fan Humidity
+        ##########################################################
+
+  sensor.office_fan_humidity:
+    friendly_name: Office Humidity
+
+        ##########################################################
+        ## Outdoor Weather
+        ##########################################################
+
+  sensor.REDACTED_temperature:
+    friendly_name: 'Outdoor Temperature'
+
+        ##########################################################
+        ## Craft Room Temperature
+        ##########################################################
+
+  sensor.craft_room_temperature:
+    device_class: temperature
+
+        ##########################################################
+        ## Craft Room Temperature
+        ##########################################################
+
+  sensor.craft_room_humidity:
+    device_class: humidity    
+
+        ##########################################################
+        ## Fitness Room Temperature
+        ##########################################################
+
+  sensor.fitness_room_temperature:
+    device_class: temperature
+
+        ##########################################################
+        ## Fitness Room Temperature
+        ##########################################################
+
+  sensor.fitness_room_humidity:
+    device_class: humidity    
+
+        ##########################################################
+        ## Bathroom Temperature
+        ##########################################################
+
+  sensor.bathroom_temperature_vera:
+    device_class: temperature
+
+        ##########################################################
+        ## Bathroom Temperature
+        ##########################################################
+
+  sensor.bathroom_humidity:
+    device_class: humidity        
+
+#################################################################
+## Covers
+#################################################################
+
+        ##########################################################
+        ##  Garage Door
+        ##########################################################
+
+  cover.garage_door:
+    device_class: garage
+
+#################################################################
+## Door Sensors
+#################################################################
+
+        ##########################################################
+        ##  Front Door Sensor
+        ##########################################################
+
+  binary_sensor.front_door_opened:
+    device_class: door
+
+        ##########################################################
+        ##  Back Door Sensor
+        ##########################################################
+
+  binary_sensor.back_door_opened:
+    device_class: door
+
+        ##########################################################
+        ##  Basement Door Sensor
+        ##########################################################
+
+  binary_sensor.basement_door_opened:
+    device_class: door
+
+#################################################################
+## Window Sensors
+#################################################################
+
+        ##########################################################
+        ##  USER1's Office Right Window
+        ##########################################################
+
+  binary_sensor.USER1s_office_window_right:
+    device_class: window
+
+#################################################################
+## Calendars
+#################################################################
+
+        ##########################################################
+        ## Holiday Calendar
+        ##########################################################
+
+  sensor.holidays_calendar:
+    icon: mdi:calendar
+    friendly_name: Upcoming Holiday
+
+#################################################################
+## Network Sensors
+#################################################################
+
+        ##########################################################
+        ## WAN Sensor
+        ##########################################################
+
+  binary_sensor.wan:
+    icon: mdi:wan
+    friendly_name: Network WAN
+
+        ##########################################################
+        ## Gateway Sensor
+        ##########################################################
+
+  binary_sensor.gateway:
+    icon: mdi:lan
+    friendly_name: Network Gateway
+
+        ##########################################################
+        ## REDACTED (REDACTED) VPN Sensor
+        ##########################################################
+
+  binary_sensor.REDACTED_vpn:
+    icon: mdi:lan-pending
+    friendly_name: REDACTED (REDACTED) VPN
+
+        ##########################################################
+        ## REDACTED (REDACTED) VPN Sensor
+        ##########################################################
+
+  binary_sensor.REDACTED_vpn:
+    icon: mdi:lan-pending
+    friendly_name: REDACTED (REDACTED) VPN
+
+        ##########################################################
+        ## REDACTED (REDACTED) VPN Sensor
+        ##########################################################
+
+  binary_sensor.REDACTED_vpn:
+    icon: mdi:lan-pending
+    friendly_name: REDACTED (REDACTED) VPN
+
+        ##########################################################
+        ## Bond Home Hub Sensor
+        ##########################################################
+
+  binary_sensor.bond_home_hub:
+    icon: mdi:lan-pending
+    friendly_name: Bond Home Hub
+
+#################################################################
+## Motion Sensors
+#################################################################
+
+        ##########################################################
+        ## Living Room Motion Sensor
+        ##########################################################
+
+  binary_sensor.living_room_motion:
+    device_class: motion
+
+        ##########################################################
+        ## Dining Room Motion Sensor
+        ##########################################################
+
+  binary_sensor.dining_room_motion:
+    device_class: motion
+
+        ##########################################################
+        ## Kitchen Motion Sensor
+        ##########################################################
+
+  binary_sensor.kitchen_motion:
+    device_class: motion
+
+        ##########################################################
+        ## Bathroom Motion Sensor
+        ##########################################################
+
+  binary_sensor.bathroom_motion:
+    device_class: motion
+
+        ##########################################################
+        ## USER1's Office Motion Sensor
+        ##########################################################
+
+  binary_sensor.USER1s_office_motion:
+    device_class: motion
+
+        ##########################################################
+        ## USER2's Office Motion Sensor
+        ##########################################################
+
+  binary_sensor.USER2s_office_motion:
+    device_class: motion
+
+        ##########################################################
+        ## Stair's Motion Sensor
+        ##########################################################
+
+  binary_sensor.stairs_motion:
+    device_class: motion
+
+        ##########################################################
+        ## Upstairs Bathroom Motion Sensor
+        ##########################################################
+
+  binary_sensor.upstairs_bathroom_motion:
+    device_class: motion
+
+        ##########################################################
+        ## USER2's Closet Motion Sensor
+        ##########################################################
+
+  binary_sensor.USER2_bedroom_closet_motion:
+    device_class: motion
+
+        ##########################################################
+        ## Basement Motion Sensor
+        ##########################################################
+
+  binary_sensor.basement_motion:
+    device_class: motion
+
+        ##########################################################
+        ## Craft Room Motion Sensor
+        ##########################################################
+
+  binary_sensor.craft_room_motion:
+    device_class: motion
+
+        ##########################################################
+        ## Fitness Room Motion Sensor
+        ##########################################################
+
+  binary_sensor.fitness_room_motion:
+    device_class: motion
+
+#################################################################
+## Water Sensors
+#################################################################
+
+        ##########################################################
+        ## Basement Drain Water Sensor
+        ##########################################################
+
+  binary_sensor.basement_drain_water_sensor_liquid_detected:
+    device_class: moisture
+
+        ##########################################################
+        ## Sump Pump Water Sensor
+        ##########################################################
+
+  binary_sensor.sump_pump_water_sensor_liquid_detected:
+    device_class: moisture
+
+        ##########################################################
+        ## Basement Door Water Sensor
+        ##########################################################
+
+  binary_sensor.basement_door_water_sensor:
+    device_class: moisture
+
+        ##########################################################
+        ## Kitchen Sink Water Sensor
+        ##########################################################
+
+  binary_sensor.kitchen_sink_water_sensor:
+    device_class: moisture
+
+        ##########################################################
+        ## Bathroom Sink Water Sensor
+        ##########################################################
+
+  binary_sensor.bathroom_sink_water_sensor:
+    device_class: moisture
+
+        ##########################################################
+        ## Upstairs Bathroom Water Sensor
+        ##########################################################
+
+  binary_sensor.upstairs_bathrooom_water_sensor:
+    device_class: moisture
+
+        ##########################################################
+        ## Utility Sink Bathroom Water Sensor
+        ##########################################################
+
+  binary_sensor.utility_sink_water_sensor:
+    device_class: moisture
+
+        ##########################################################
+        ## Water Heater Water Sensor
+        ##########################################################
+
+  binary_sensor.coal_room_water_sensor:
+    device_class: moisture
+
+        ##########################################################
+        ## Washing Machine Water Sensor
+        ##########################################################
+
+  binary_sensor.washing_machine_water_sensor:
+    device_class: moisture
+
+#################################################################
+## Switches
+#################################################################
+
+        ##########################################################
+        ## Backyard Lighting Switch
+        ##########################################################
+
+  switch.backyard_lighting:
+    icon: mdi:flower
+    friendly_name: Backyard Landscape Lighting
+
+        ##########################################################
+        ## Living Room Random Color Switch
+        ##########################################################
+
+  switch.livingroom_rainbow:
+    icon: mdi:palette
+    friendly_name: Living Room Random Color
+
+        ##########################################################
+        ## Bedroom Random Color Switch
+        ##########################################################
+
+  switch.bedroom_rainbow:
+    icon: mdi:palette
+    friendly_name: Bedroom Random Color
+
+        ##########################################################
+        ## USER1's Office Random Color Switch
+        ##########################################################
+
+  switch.office_rainbow:
+    icon: mdi:palette
+    friendly_name: Office Random Color
+
+        ##########################################################
+        ## Front Porch Random Color Switch
+        ##########################################################
+
+  switch.front_porch_rainbow:
+    icon: mdi:palette
+    friendly_name: Front Porch Random Color
+
+        ##########################################################
+        ## Bedtime Switch
+        ##########################################################
+
+  switch.bedtime:
+    icon: mdi:bed
+    friendly_name: Bedtime
+
+        ##########################################################
+        ## Panic Mode Switch
+        ##########################################################
+
+  switch.panic_mode:
+    icon: mdi:alarm-light
+    friendly_name: Panic Mode
+
+        ##########################################################
+        ## Disable Smoke Alarm Switch
+        ##########################################################
+
+  switch.disable_smoke_alarm:
+    icon: mdi:fire-truck
+    friendly_name: Disable Fire Alarm
+
+        ##########################################################
+        ## Bedroom Sonos Beam Speech Enhance
+        ##########################################################
+
+  switch.bedroom_sonos_speech_enhance:
+    icon: mdi:account-voice
+    friendly_name: Bedroom Sonos Speech Enhance
+
+        ##########################################################
+        ## Bedroom Sonos Beam Night Sound
+        ##########################################################
+
+  switch.bedroom_sonos_night_sound:
+    icon: mdi:weather-night
+    friendly_name: Bedroom Sonos Night Sound
+
+        ##########################################################
+        ## Fitness Room Sonos Beam Speech Enhance
+        ##########################################################
+
+  switch.fitness_room_sonos_speech_enhance:
+    icon: mdi:account-voice
+    friendly_name: Fitness Room Sonos Speech Enhance
+
+        ##########################################################
+        ## Fitness Room Sonos Beam Night Sound
+        ##########################################################
+
+  switch.fitness_room_sonos_night_sound:
+    icon: mdi:weather-night
+    friendly_name: Fitness Room Sonos Night Sound
+
+        ##########################################################
+        ## Surround Sound Sonos Speech Enhance
+        ##########################################################
+
+  switch.surround_sound_sonos_speech_enhance:
+    icon: mdi:account-voice
+    friendly_name: Surround Sound Speech Enhance
+
+        ##########################################################
+        ## Surround Sound Sonos Night Sound
+        ##########################################################
+
+  switch.surround_sound_sonos_night_sound:
+    icon: mdi:weather-night
+    friendly_name: Surround Sound Sonos Night Sound
+
+#################################################################
+## Lights
+#################################################################
+
+        ##########################################################
+        ## Bedroom Closet Ceiling Light
+        ##########################################################
+
+  light.bedroom_closet_ceiling:
+    icon: mdi:ceiling-light
+    friendly_name: Bedroom Closet Ceiling
+
+        ##########################################################
+        ## Bedroom Celing Light
+        ##########################################################
+
+  light.bedroom_ceiling:
+    icon: mdi:ceiling-light
+    Friendly Name: Bedroom Ceiling Light
+
+        ##########################################################
+        ## Living Room Lights
+        ##########################################################
+
+  light.living_room_lights:
+    icon: mdi:sofa
+    friendly_name: Living Room
+
+        ##########################################################
+        ## Dining Room Lights
+        ##########################################################
+
+  light.dining_room_lights:
+    icon: mdi:silverware-variant
+    friendly_name: Dining Room
+
+        ##########################################################
+        ## Bedroom Lights
+        ##########################################################
+
+  light.bedroom_lights:
+    icon: mdi:bed
+    friendly_name: Bedroom
+
+        ##########################################################
+        ## Kitchen Lights
+        ##########################################################
+
+  light.kitchen_lights:
+    icon: mdi:fridge
+    friendly_name: Kitchen
+
+        ##########################################################
+        ## Bathroom Lights
+        ##########################################################
+
+  light.bathroom_lights:
+    icon: mdi:shower
+    friendly_name: Bathroom
+
+        ##########################################################
+        ## Upstairs Bathroom Lights
+        ##########################################################
+
+  light.upstairs_bathroom_lights:
+    icon: mdi:shower
+    friendly_name: Upstairs Bathroom
+
+        ##########################################################
+        ## USER1's Office Lights
+        ##########################################################
+
+  light.USER1_office_lights:
+    icon: mdi:desk
+    friendly_name: USER1's Office
+
+        ##########################################################
+        ## Guest Bedroom Lights
+        ##########################################################
+
+  light.guest_bedroom_lights:
+    icon: mdi:bed
+    friendly_name: Guest Bedroom
+
+        ##########################################################
+        ## Basement Lights
+        ##########################################################
+
+  light.basement_lighting:
+    icon: mdi:stairs-down
+    friendly_name: Basement
+
+        ##########################################################
+        ## Front Porch Lights
+        ##########################################################
+
+  light.front_porch:
+    icon: mdi:coach-lamp
+    friendly_name: Front Porch
+
+        ##########################################################
+        ## Back Door Lights
+        ##########################################################
+
+  light.back_door:
+    icon: mdi:ceiling-light
+    friendly_name: Back Door
+
+        ##########################################################
+        ## Backyard Deck Lights
+        ##########################################################
+
+  light.backyard_deck:
+    icon: mdi:track-light
+    friendly_name: Backyard Deck
+
+        ##########################################################
+        ## Living Room Lamps
+        ##########################################################
+
+  light.living_room_lamps:
+    icon: mdi:floor-lamp
+    friendly_name: Living Room Lamps
+
+        ##########################################################
+        ## USER2's Office Lights
+        ##########################################################
+
+  light.USER2_office_lights:
+    icon: mdi:desk
+    friendly_name: USER2's Office
+
+        ##########################################################
+        ## Basement Lights
+        ##########################################################
+
+  light.basement_lights:
+    icon: mdi:ceiling-light
+    friendly_name: Basement Lights
+
+        ##########################################################
+        ## Laundry Room Light
+        ##########################################################
+
+  light.laundry_room_light:
+    icon: mdi:wall-sconce-flat
+    friendly_name: Laundry Room Light
+
+        ##########################################################
+        ## Living Room Fan Lights
+        ##########################################################
+
+  light.living_room_fan_lights:
+    icon: mdi:ceiling-light
+    friendly_name: Living Room Fan Lights
+
+        ##########################################################
+        ## Living Room Accent Lights
+        ##########################################################
+
+  light.living_room_accent_lights:
+    icon: mdi:floor-lamp
+    friendly_name: Living Room Accent Lights
+
+#################################################################
+## Receiver
+#################################################################
+
+        ##########################################################
+        ## Surround Sound Receiver
+        ##########################################################
+
+  media_player.surround_sound_receiver:
+    icon: mdi:speaker
+    friendly_name: Surround Sound Receiver
+
+#################################################################
+## NAS
+#################################################################
+
+        ##########################################################
+        ## NAS Status
+        ##########################################################
+
+  sensor.nas_status:
+    icon: mdi:nas
+    friendly_name: System Status
+
+        ##########################################################
+        ## NAS Drive 01 Status
+        ##########################################################
+
+  sensor.nas_smart_status_drive_0_1:
+    icon: mdi:harddisk
+    friendly_name: Drive 1 SMART Status
+
+        ##########################################################
+        ## NAS Drive 02 Status
+        ##########################################################
+
+  sensor.nas_smart_status_drive_0_2:
+    icon: mdi:harddisk
+    friendly_name: Drive 2 SMART Status
+
+        ##########################################################
+        ## NAS Drive 03 Status
+        ##########################################################
+
+  sensor.nas_smart_status_drive_0_3:
+    icon: mdi:harddisk
+    friendly_name: Drive 3 SMART Status
+
+        ##########################################################
+        ## NAS Drive 04 Status
+        ##########################################################
+
+  sensor.nas_smart_status_drive_0_4:
+    icon: mdi:harddisk
+    friendly_name: Drive 4 SMART Status
+
+        ##########################################################
+        ## NAS Volume Used
+        ##########################################################
+
+  sensor.nas_volume_used_storage:
+    friendly_name: Storage Volume Used
+
+        ##########################################################
+        ## NAS CPU Usage
+        ##########################################################
+
+  sensor.nas_cpu_usage:
+    friendly_name: CPU Usage
+
+        ##########################################################
+        ## NAS Memory Usage
+        ##########################################################
+
+  sensor.nas_memory_usage:
+    friendly_name: Memory Usage
+
+#################################################################
+## UPS
+#################################################################
+
+        ##########################################################
+        ## UPS Runtime Remaining
+        ##########################################################
+
+  sensor.ups_battery_runtime_mins:
+    icon: mdi:timer-outline
+
+#################################################################
+## Laundry
+#################################################################
+
+        ##########################################################
+        ## Washing Machine Time Remaining
+        ##########################################################
+
+  sensor.washing_machine_time_remaining:
+    icon: mdi:timer-outline
+    friendly_name: Washer Time Remaining
+
+        ##########################################################
+        ## Washing Machine Error Message
+        ##########################################################
+
+  sensor.washer_error:
+    icon: mdi:washing-machine-alert
+    friendly_name: Washer Error
+
+        ##########################################################
+        ## Dryer Time Remaining
+        ##########################################################
+
+  sensor.dryer_time_remaining:
+    icon: mdi:timer-outline
+    friendly_name: Dryer Time Remaining
+
+        ##########################################################
+        ## Dryer Error Message
+        ##########################################################
+
+  sensor.dryer_error:
+    icon: mdi:tumble-dryer-alert
+    friendly_name: Dryer Error
+
+        ##########################################################
+        ## Washer Tub Clean
+        ##########################################################
+
+  binary_sensor.washer_tub_clean_on:
+    icon: mdi:washing-machine-alert
+    friendly_name: Washer Tub Clean Required
+
+#################################################################
+## Sump Pump
+#################################################################
+
+        ##########################################################
+        ## Sump Pump Status Sensor
+        ##########################################################
+
+  binary_sensor.sump_pump_status:
+    icon: mdi:water-pump
+    friendly_name: Sump Pump
+
+        ##########################################################
+        ## Sump Pump Current Power Sensor
+        ##########################################################
+
+  sensor.sump_pump_current_power:
+    icon: mdi:power-plug
+    friendly_name: Sump Pump Wattage
+
+#################################################################
+## Fans
+#################################################################
+
+        ##########################################################
+        ## Living Room Fan East
+        ##########################################################
+
+  fan.living_room_east:
+    assumed_state: false
+
+        ##########################################################
+        ## Living Room Fan West
+        ##########################################################
+
+  fan.living_room_west:
+    assumed_state: false
+
+        ##########################################################
+        ## Living Room Ceiling Light (East)
+        ##########################################################
+
+  light.living_room_ceiling_east:
+    assumed_state: false
+
+        ##########################################################
+        ## Living Room Ceiling Light (West)
+        ##########################################################
+
+  light.living_room_ceiling_west:
+    assumed_state: false
+
+        ##########################################################
+        ## Living Room Fans Group
+        ##########################################################
+
+  group.living_room_fans:
+    icon: mdi:fan
+    friendly_name: Living Room Fans
+    assumed_state: false
+
+        ##########################################################
+        ## Living Room Fans Switch
+        ##########################################################
+
+  switch.living_room_fans:
+    icon: mdi:fan
+    friendly_name: Living Room Fans
+
+        ##########################################################
+        ## Living Room Fan East Dimmer
+        ##########################################################
+
+  switch.living_room_east_fan_dimmer:
+    icon: mdi:lightbulb-on
+    friendly_name: Living Room Ceiling East Dimmer
+
+        ##########################################################
+        ## Living Room Fan West Dimmer
+        ##########################################################
+
+  switch.living_room_west_fan_dimmer:
+    icon: mdi:lightbulb-on
+    friendly_name: Living Room Ceiling West Dimmer
+
+#################################################################
+## Pi-hole
+#################################################################
+
+        ##########################################################
+        ## REDACTED Pi-hole Group
+        ##########################################################
+
+  group.pihole:
+    icon: mdi:pi-hole
+    friendly_name: Ad Blocking
+
+#################################################################
+## Light Level Sensors
+#################################################################
+
+        ##########################################################
+        ## Bathroom Light Level Sensor
+        ##########################################################
+
+  sensor.bathroom_light_level:
+    device_class: illuminance
+    unit_of_measurement: 'Lux'
+
+        ##########################################################
+        ## Craft Room Light Level Sensor
+        ##########################################################
+
+  sensor.craft_room_light_level:
+    device_class: illuminance
+    unit_of_measurement: 'Lux'
+
+        ##########################################################
+        ## Fitness Room Light Level Sensor
+        ##########################################################
+
+  sensor.fitness_room_light_level:
+    device_class: illuminance
+    unit_of_measurement: 'Lux'
+
+#################################################################
+## 3D Printer
+#################################################################
+
+        ##########################################################
+        ## Prusa Mini Bed Temperature
+        ##########################################################
+
+  sensor.prusa_mini_actual_bed_temp_celcius:
+    icon: mdi:radiator
+    state_class: measurement
+
+        ##########################################################
+        ## Prusa Mini Bed Target Temperature
+        ##########################################################
+
+  sensor.prusa_mini_target_bed_temp_celcius:
+    icon: mdi:radiator
+    state_class: measurement
+
+        ##########################################################
+        ## Prusa Mini Nozzle Temperature
+        ##########################################################
+
+  sensor.prusa_mini_actual_tool0_temp_celcius:
+    icon: mdi:printer-3d-nozzle-heat
+    state_class: measurement
+
+        ##########################################################
+        ## Prusa Mini Nozzle Target Temperature
+        ##########################################################
+
+  sensor.prusa_mini_target_tool0_temp_celcius:
+    icon: mdi:printer-3d-nozzle-heat
+    state_class: measurement
+
+        ##########################################################
+        ## Prusa Bed Temperature
+        ##########################################################
+
+  sensor.prusa_actual_bed_temp_celcius:
+    icon: mdi:radiator
+    state_class: measurement
+
+        ##########################################################
+        ## Prusa Bed Target Temperature
+        ##########################################################
+
+  sensor.prusa_target_bed_temp_celcius:
+    icon: mdi:radiator
+    state_class: measurement
+
+        ##########################################################
+        ## Prusa Nozzle Temperature
+        ##########################################################
+
+  sensor.prusa_actual_tool0_temp_celcius:
+    icon: mdi:printer-3d-nozzle-heat
+    state_class: measurement
+
+        ##########################################################
+        ## Prusa Nozzle Target Temperature
+        ##########################################################
+
+  sensor.prusa_target_tool0_temp_celcius:
+    icon: mdi:printer-3d-nozzle-heat
+    state_class: measurement

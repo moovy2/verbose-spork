@@ -1,0 +1,122 @@
+#################################################################
+## Scripts
+#################################################################
+
+        ##########################################################
+        ## Sonos Text to Speech
+        ##########################################################
+
+say:
+  alias: Sonos TTS
+  sequence:
+    - service: sonos.snapshot
+      data_template:
+        with_group: yes
+        entity_id: "{{ where }}"
+    - delay: '00:00:03'
+    - service: sonos.unjoin
+      data_template:
+        entity_id: "{{ where }}"
+    - delay: '00:00:01'
+    - service: sonos.join
+      data_template:
+        master: "{{ master }}"
+        entity_id: "{{ where }}"
+    - delay: '00:00:01'
+    - service: media_player.volume_set
+      data_template:
+        entity_id: "{{ where }}"
+        volume_level: "{{ volume }}"
+    - delay: '00:00:02'
+    - service: tts.cloud_say
+      data_template:
+        entity_id: "{{ master }}"
+        message: "{{ what }}"
+    - delay: '00:00:25'
+    - service: sonos.restore
+      data_template:
+        with_group: yes
+        entity_id: "{{ where }}"
+
+        ##########################################################
+        ## Living Room Fan Light Dimmers
+        ##########################################################
+
+living_room_fan_light_dimmer:
+  alias: Living Room Fan Lights Dimmer Sequence
+  sequence:
+    - service: switch.turn_on
+      entity_id:
+        - switch.living_room_east_fan_dimmer
+    - delay: '00:00:05'
+    - service: switch.turn_off
+      entity_id:
+        - switch.living_room_east_fan_dimmer
+    - delay: '00:00:02'
+    - service: switch.turn_on
+      entity_id:
+        - switch.living_room_west_fan_dimmer
+    - delay: '00:00:07'
+    - service: switch.turn_off
+      entity_id:
+        - switch.living_room_west_fan_dimmer
+
+#################################################################
+## Apple TV App Launch Scripts
+#################################################################
+
+        ##########################################################
+        ## Living Room Netflix
+        ##########################################################
+
+living_room_launch_netflix:
+  alias: Living Room Launch Netflix
+  icon: mdi:netflix
+  sequence:
+    - service: media_player.select_source
+      target:
+        entity_id: media_player.living_room_appletv
+      data:
+        source: "Netflix"
+
+        ##########################################################
+        ## Living Room Plex
+        ##########################################################
+
+living_room_launch_plex:
+  alias: Living Room Launch Plex
+  icon: mdi:plex
+  sequence:
+    - service: media_player.select_source
+      target:
+        entity_id: media_player.living_room_appletv
+      data:
+        source: "Plex"
+
+        ##########################################################
+        ## Living Room Disney+
+        ##########################################################
+
+living_room_launch_disney:
+  alias: "Living Room Launch Disney+"
+  icon: mdi:caREDACTEDe
+  sequence:
+    - service: media_player.select_source
+      target:
+        entity_id: media_player.living_room_appletv
+      data:
+        source: "Disney+"
+
+        ##########################################################
+        ## Living Room Hulu
+        ##########################################################
+
+living_room_launch_hulu:
+  alias: "Living Room Launch Hulu"
+  icon: mdi:hulu
+  sequence:
+    - service: media_player.select_source
+      target:
+        entity_id: media_player.living_room_appletv
+      data:
+        source: "Hulu"

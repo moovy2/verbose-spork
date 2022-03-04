@@ -1,0 +1,92 @@
+#################################################################
+## Binary Sensors
+#################################################################
+
+        ##########################################################
+        ## Wan Monitor
+        ##########################################################
+
+  - platform: ping
+    host: 8.8.8.8
+    name: WAN
+    scan_interval: 60
+
+        ##########################################################
+        ## Gateway Monitor
+        ##########################################################
+
+  - platform: ping
+    host: router.network.REDACTED
+    name: Gateway
+    scan_interval: 60
+
+        ##########################################################
+        ## REDACTED (REDACTED) VPN Monitor
+        ##########################################################
+
+  - platform: ping
+    host: REDACTED-router.network.REDACTED
+    name: REDACTED VPN
+    scan_interval: 300
+
+        ##########################################################
+        ## REDACTED (REDACTED) VPN Monitor
+        ##########################################################
+
+  - platform: ping
+    host: REDACTED-router.network.REDACTED
+    name: REDACTED VPN
+    scan_interval: 300
+
+        ##########################################################
+        ## REDACTED (REDACTED) VPN Monitor
+        ##########################################################
+
+  - platform: ping
+    host: REDACTED-router.network.REDACTED
+    name: REDACTED VPN
+    scan_interval: 300
+
+        ##########################################################
+        ## Bond Home Hub Monitor
+        ##########################################################
+
+  - platform: ping
+    host: bond.network.REDACTED
+    name: Bond Home Hub
+    scan_interval: 90
+
+        ##########################################################
+        ## Sump Pump
+        ##########################################################
+
+  - platform: template
+    sensors:
+      sump_pump_status:
+        friendly_name: 'Sump Pump Status'
+        delay_on:
+          seconds: 1
+        delay_off:
+          seconds: 1
+        value_template: >-
+          {{ states('sensor.sump_pump_switch_electric_consumed_w')| int >= 1  }}
+
+        ##########################################################
+        ## Washer Tub Clean
+        ##########################################################
+
+  - platform: template
+    sensors:
+      washer_tub_clean_on:
+        friendly_name: "Washer Tub Clean"
+        device_class: problem
+        value_template: "{{ states('sensor.washer_tub_clean')|float > 29 }}"
+
+        ##########################################################
+        ## 3D Printer
+        ##########################################################
+
+  - platform: octoprint
+    monitored_conditions:
+      - Printing
+      - Printing Error

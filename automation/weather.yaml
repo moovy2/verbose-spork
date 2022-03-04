@@ -1,0 +1,127 @@
+#################################################################
+## Weather Based Automations
+#################################################################
+
+        ##########################################################
+        ## Turn Globe Blue when Raining
+        ##########################################################
+
+- alias: Weather - Turn Globe Blue when Raining
+  id: 'weather_turn_globe_blue_when_raining'
+
+  trigger:
+    - platform: state
+      entity_id: weather.REDACTED
+      to: 'rainy'
+      for:
+        hours: 0
+        minutes: 1
+        seconds: 0
+
+  condition:
+    - condition: state
+      entity_id: group.household
+      state: 'home'
+    - condition: state
+      entity_id: light.globe
+      state: 'on'
+
+  action:
+    - service: light.turn_on
+      entity_id:
+        - light.globe
+      data:
+        color_name: blue
+        brightness_pct: 100
+        transition: 30
+
+        ##########################################################
+        ## Reset Globe Color when Not Raining
+        ##########################################################
+
+- alias: Weather - Reset Globe Color when Not Raining
+  id: 'weather_reset_globe_color_when_not_raining'
+
+  trigger:
+    - platform: state
+      entity_id: weather.REDACTED
+      from: 'rainy'
+
+  condition:
+    - condition: state
+      entity_id: group.household
+      state: 'home'
+    - condition: state
+      entity_id: light.globe
+      state: 'on'
+
+  action:
+    - service: light.turn_on
+      entity_id:
+        - light.globe
+      data:
+        brightness_pct: 20
+        color_temp: 366
+
+        ##########################################################
+        ## Set Globe Blue when On and Raining
+        ##########################################################
+
+- alias: Weather - Set Globe Blue when On and Raining
+  id: 'weather_set_globe_blue_when_on_and_raining'
+
+  trigger:
+    - platform: state
+      entity_id: light.globe
+      from: 'off'
+      to: 'on'
+      for:
+        hours: 0
+        minutes: 1
+        seconds: 0
+
+  condition:
+    - condition: state
+      entity_id: group.household
+      state: 'home'
+    - condition: state
+      entity_id: weather.REDACTED
+      state: 'rainy'
+    - condition: state
+      entity_id: input_boolean.livingroom_rainbow
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.interior_holiday
+      state: 'off'
+    - condition: state
+      entity_id: alarm_control_panel.alarm
+      state: 'disarmed'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.basement_drain_water_sensor_liquid_detected
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.kitchen_sink_water_sensor
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.bathroom_sink_water_sensor
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.upstairs_bathrooom_water_sensor
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.utility_sink_water_sensor
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.washing_machine_water_sensor
+        state: 'off'
+
+  action:
+    - service: light.turn_on
+      entity_id:
+        - light.globe
+      data:
+        color_name: blue
+        brightness_pct: 100
+        transition: 90
